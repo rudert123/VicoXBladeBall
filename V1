@@ -308,7 +308,6 @@ function AutoParry.perform_parry()
         -- Mengatur cooldown menjadi true
         ball_properties.cooldown = true
 
-        -- Mengirimkan perintah FireServer untuk auto spam
         VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
         VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
 
@@ -324,7 +323,6 @@ function AutoParry.perform_parry()
         return
     end
 
-    -- Mengirimkan perintah FireServer untuk parry normal
     VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
     VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
 
@@ -760,10 +758,10 @@ ConnectionsManager['auto_parry'] = RunService.PostSimulation:Connect(function()
     local ball_properties = AutoParry.ball.properties
     ball_properties.is_curved = AutoParry.is_curved()
 
-    local ping_threshold = math.clamp(Player.Entity.properties.ping / 10, 15, math.min(16, Player.Entity.properties.ping / 5))
+    local ping_threshold = math.clamp(Player.Entity.properties.ping / 10, 10, math.min(16, Player.Entity.properties.ping / 5))
     local spam_accuracity = ball_properties.maximum_speed / 7 + ping_threshold
     local parry_accuracity = ball_properties.maximum_speed / 11.5 + ping_threshold
-    ball_properties.spam_range = ping_threshold + ball_properties.speed / 2.3
+    ball_properties.spam_range = ping_threshold + ball_properties.speed / 2
     ball_properties.parry_range = ping_threshold + ball_properties.speed / math.pi
 
     if Player.Entity.properties.sword == 'Titan Blade' then
