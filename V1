@@ -325,7 +325,7 @@ function AutoParry.perform_parry()
         end
     else
         direction = CFrame.new(camera_direction, target_position + Vector3.new(0, 60, 0))
-        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
         task.delay(0.25, function()
             if ball_properties.parries > 0 then
                 ball_properties.parries -= 1
@@ -343,7 +343,7 @@ function AutoParry.perform_parry()
         return
     end
 
-    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
+    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
     
     task.delay(0.25, function()
         if ball_properties.parries > 0 then
@@ -798,7 +798,7 @@ ConnectionsManager['auto_parry'] = RunService.PostSimulation:Connect(function()
     local ping_threshold = math.clamp(Player.Entity.properties.ping / 10, 10, math.min(16, Player.Entity.properties.ping / 5))
     local spam_accuracity = ball_properties.maximum_speed / 7 + ping_threshold
     local parry_accuracity = ball_properties.maximum_speed / 11.5 + ping_threshold
-    ball_properties.spam_range = ping_threshold + ball_properties.speed / 2.2
+    ball_properties.spam_range = ping_threshold + ball_properties.speed / 2
     ball_properties.parry_range = ping_threshold + ball_properties.speed / math.pi
 
     if Player.Entity.properties.sword == 'Titan Blade' then
