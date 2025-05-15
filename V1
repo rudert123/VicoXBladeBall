@@ -326,7 +326,6 @@ function AutoParry.perform_parry()
     else
         direction = CFrame.new(camera_direction, target_position + Vector3.new(0, 60, 0))
         VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
-        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, nil)
         task.delay(0.25, function()
             if ball_properties.parries > 0 then
                 ball_properties.parries -= 1
@@ -344,9 +343,8 @@ function AutoParry.perform_parry()
         return
     end
 
-    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
-    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
-
+    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
+    
     task.delay(0.25, function()
         if ball_properties.parries > 0 then
             ball_properties.parries -= 1
