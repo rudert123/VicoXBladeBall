@@ -308,7 +308,7 @@ function AutoParry.perform_parry()
         -- Mengatur cooldown menjadi true
         ball_properties.cooldown = true
 
-        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
         VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
 
 
@@ -323,7 +323,7 @@ function AutoParry.perform_parry()
         return
     end
 
-    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, nil)
+    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
     VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
 
 
